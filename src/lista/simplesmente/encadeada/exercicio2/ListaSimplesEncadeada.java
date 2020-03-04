@@ -98,9 +98,9 @@ public class ListaSimplesEncadeada {
 		
 	}
 	
-	public Object getElement(int index) {
+	public Aluno getElement(int index) {
 		if(index >= 0 && index < size) {
-			return posicao(index).getElement();
+			return (Aluno) posicao(index).getElement();
 		}else {
 			System.err.println("Erro: o elemento ainda não existe na lista");
 			return null;
@@ -135,6 +135,20 @@ public class ListaSimplesEncadeada {
 			atual = atual.getNext();
 		}
 		return atual;
+	}
+	
+	public Aluno[] returnAll() {
+		Aluno[] todos = new Aluno[size];
+		Node atual = primeiro;
+		int i = 0; 
+		while(atual != null) {
+			todos[i] = (Aluno) atual.getElement();
+			atual = atual.getNext();
+			i++;
+		}
+		
+		return todos;
+		
 	}
 
 }

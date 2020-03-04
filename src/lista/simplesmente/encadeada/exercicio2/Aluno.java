@@ -10,7 +10,7 @@ public class Aluno {
 	private float notaSub;
 	private float notaEx;
 	
-	public Aluno(String numMatricula, String nome, String disciplina, float notap1, float notap2, float notaSub,float notaEx) {
+	public Aluno(String numMatricula, String nome, String disciplina, float notap1, float notap2, float notaSub, float notaEx) {
 		super();
 		this.numMatricula = numMatricula;
 		this.nome = nome;
