@@ -13,7 +13,7 @@ public class SLinkedList {
 		this.size = 0;
 	}
 
-	public void add(String element) {
+	public void addCabeca(String element) {
 
 		if (size == 0) {
 
@@ -58,6 +58,37 @@ public class SLinkedList {
 
 	}
 
+	public Object add(String element, int index) {
+
+		if (size >= 0 && size >= index) {
+			Node atual = head;
+			Node ult = null;
+			int i = 0;
+			while (atual != null && index != i) {
+                i++;
+				ult = atual;
+				atual = atual.getNext();
+
+			}
+
+			if (ult == null) {
+				Node newNode = new Node(element, atual);
+				head = newNode;
+				size++;
+			}else {
+				Node newNode = new Node(element, atual);
+				ult.setNext(newNode);
+				size++;
+			}
+
+		}
+		
+		
+
+		return index;
+
+	}
+
 	public Object getIndex(int index) {
 
 		if (size > 0 && size > index) {
@@ -75,29 +106,70 @@ public class SLinkedList {
 
 	}
 
-	public void remove(int index) {
+	public void remove(String index) {
+		Node node = head;
+		Node ult = null;
 
-		if (size > 0) {
-
-			if (index > 0 && size > index) {
-				Node node = head;
-				Node ult = null;
-				for (int i = 1; i <= index; i++) {
-					ult = node;
-					node = node.getNext();
-				}
-
-				ult.setNext(node.getNext());
-				size--;
-
-			} else if (index == 0) {
-				head = head.getNext();
-				size--;
-			} else {
-				System.err.println("Posição não existe");
-			}
-
+		while(node != null && node.equals(index)) {
+			ult = node;
+			node = node.getNext();
 		}
+
+		if (ult == null) {
+			head = node.getNext();
+			size--;
+		} else {
+			ult.setNext(node.getNext());
+			size--;
+		}
+		
+		
+
+	}
+	
+	public void remove(int index) {
+		Node node = head;
+		Node ult = null;
+
+		int i = 0;
+		
+		while(node != null && i != index) {
+			ult = node;
+			node = node.getNext();
+			i++;
+		}
+
+		if (ult == null) {
+			head = node.getNext();
+			size--;
+		} else {
+			ult.setNext(node.getNext());
+			size--;
+		}
+		
+
+	}
+	
+	public boolean contains(String index) {
+		
+		Node find = head;
+		
+        if(head.getElement().equals(index)) {
+        	return true;
+        }
+		
+		for (int i = 1; i < size; i++) {
+			
+			find = find.getNext();
+			
+			if(find.getElement().equals(index)) {
+	        	return true;
+	        }
+		}
+		
+		
+		return false;
+		
 	}
 
 	public long tamanho() {
