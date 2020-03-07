@@ -1,4 +1,4 @@
-package lista.utilizando.vetor;
+package lista.linear.sequencial.vetor;
 
 public class Teste {
 
