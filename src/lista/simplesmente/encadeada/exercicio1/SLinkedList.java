@@ -8,30 +8,28 @@ public class SLinkedList {
 	protected long size;
 
 	public SLinkedList() {
-		super();
 		this.head = null;
 		this.size = 0;
 	}
 
-	public void addCabeca(String element) {
-
+	public Object addCabeca(String element) {
+		Node newNode;
 		if (size == 0) {
 
-			Node newNode = new Node(element, null);
+			newNode = new Node(element, null);
 			head = newNode;
 			size++;
-
 		} else {
 
-			Node newNode = new Node(element, head);
+			newNode = new Node(element, head);
 			head = newNode;
 			size++;
-
 		}
+		return newNode;
 
 	}
 
-	public void addCauda(String element) {
+	public Object addCauda(String element) {
 
 		if (size == 0) {
 
@@ -53,9 +51,10 @@ public class SLinkedList {
 			Node newNode = new Node(element, null);
 			ult.setNext(newNode);
 			size++;
-
+			return newNode;
 		}
 
+		return null;
 	}
 
 	public Object add(String element, int index) {
@@ -75,17 +74,16 @@ public class SLinkedList {
 				Node newNode = new Node(element, atual);
 				head = newNode;
 				size++;
+				return newNode;
 			}else {
 				Node newNode = new Node(element, atual);
 				ult.setNext(newNode);
 				size++;
+				return newNode;
 			}
 
 		}
-		
-		
-
-		return index;
+		return null;
 
 	}
 

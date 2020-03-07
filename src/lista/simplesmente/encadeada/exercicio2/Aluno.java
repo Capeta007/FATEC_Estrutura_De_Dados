@@ -82,6 +82,10 @@ public class Aluno {
 		return "Aluno [numMatricula=" + numMatricula + ", nome=" + nome + ", disciplina=" + disciplina + ", notap1="
 				+ notap1 + ", notap2=" + notap2 + ", notaSub=" + notaSub + ", notaEx=" + notaEx + "]";
 	}
+	
+	public double calcMedia() {
+		return ((notap1+notap2)/2);
+	}
 
 	
 }

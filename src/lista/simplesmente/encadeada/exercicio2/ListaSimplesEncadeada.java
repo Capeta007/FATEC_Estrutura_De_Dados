@@ -10,6 +10,8 @@ public class ListaSimplesEncadeada {
 
 	public ListaSimplesEncadeada() {
 
+		size =0;
+		
 	}
 
 	public void add(Object element) {
@@ -23,8 +25,7 @@ public class ListaSimplesEncadeada {
 		} else {
 
 			
-			ultimo.setNext(new Node(element, ultimo));
-			ultimo = ultimo.getNext();
+			ultimo.setNext(new Node(element, null));
 			size++;
 
 		}
@@ -35,7 +36,7 @@ public class ListaSimplesEncadeada {
 		if (size == 0 || size == index) {
 
 			add(element);
-			
+			size++;
 		} else if(index == 0){
 			
 			Node novo = new Node(element, primeiro);
@@ -63,34 +64,32 @@ public class ListaSimplesEncadeada {
 
 	}
 	
-	public void remove(int index) {
-		
-		if(index >= 0 && index < size) {
-			
-			Node atual = primeiro;
-			Node ult = null;
-			
-			for (int i = 1; i <= index; i++) {
-				ult = atual;
-				atual = atual.getNext();
+	public boolean remove(String num) {
+		num = num.trim();
+		Node atual = primeiro;
+		Node ult = null;
+		Aluno aluno;
+		while(atual != null) {
+			aluno = (Aluno) atual.getElement();
+			if(aluno.getNumMatricula().trim().equals(num)) {
+ 
+				if(ult == null) {
+					primeiro = atual.getNext();
+					return true;
+				}else {
+					ult.setNext(atual.getNext());
+					return true;
+				}
+				
+				
 			}
-			
-			if(ult == null) {
-				primeiro = atual.getNext();
-				size--;
-			}else {
-				ult.setNext(atual.getNext());
-				size--;
-			}
-			
-			
-		}else {
-			System.err.println("Erro: o elemento ainda não existe na lista");
+			ult = atual;
+			atual = atual.getNext();
 		}
-		
+		return false;
 	}
 	
-	public void removeAll() {
+	public void clear() {
 		
 		primeiro = null;
 		ultimo = null;
@@ -98,13 +97,19 @@ public class ListaSimplesEncadeada {
 		
 	}
 	
-	public Aluno getElement(int index) {
-		if(index >= 0 && index < size) {
-			return (Aluno) posicao(index).getElement();
-		}else {
-			System.err.println("Erro: o elemento ainda não existe na lista");
-			return null;
+	public Aluno getElement(String num) {
+		num = num.trim();
+		Node atual = primeiro;
+		Aluno aluno;
+		while(atual != null) {
+			aluno = (Aluno) atual.getElement();
+			if(aluno.getNumMatricula().trim().equals(num)) {
+                return aluno;
+			}
+			atual = atual.getNext();
+			
 		}
+		return null;
 	}
 	
 	public boolean contaim(Object element) {
@@ -137,18 +142,26 @@ public class ListaSimplesEncadeada {
 		return atual;
 	}
 	
-	public Aluno[] returnAll() {
-		Aluno[] todos = new Aluno[size];
-		Node atual = primeiro;
-		int i = 0; 
-		while(atual != null) {
-			todos[i] = (Aluno) atual.getElement();
-			atual = atual.getNext();
-			i++;
+	public String imprimir() {
+		
+		if(size > 0) {
+			String alunos = "";
+			Node atual = primeiro;
+			Aluno aluno;
+			while(atual != null) {
+				aluno = (Aluno) atual.getElement();
+				alunos += aluno.getNumMatricula() + " - " + aluno.getNome() + " P1: " + aluno.getNotap1() + " P2: " + aluno.getNotap2() + " = " + aluno.calcMedia() + "\n";
+				atual = atual.getNext();
+				
+			}
+			
+			
+			return alunos;
 		}
 		
-		return todos;
+		return null;
 		
 	}
+	
 
 }
