@@ -1,12 +1,12 @@
-package lista.fila.exemplo.view;
+package lista.linear.fila.exemplo.view;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import lista.fila.exemplo.model.Funcionario;
+import lista.linear.fila.exemplo.model.Funcionario;
 
 public class QueueExample {
 

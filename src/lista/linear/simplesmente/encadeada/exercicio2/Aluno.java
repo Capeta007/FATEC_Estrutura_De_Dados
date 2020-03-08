@@ -1,4 +1,4 @@
-package lista.simplesmente.encadeada.exercicio2;
+package lista.linear.simplesmente.encadeada.exercicio2;
 
 public class Aluno {
 	
