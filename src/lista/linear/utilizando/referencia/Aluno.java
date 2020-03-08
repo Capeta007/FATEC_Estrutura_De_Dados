@@ -1,4 +1,4 @@
-package lista.utilizando.referencia;
+package lista.linear.utilizando.referencia;
 
 
 public class Aluno {
