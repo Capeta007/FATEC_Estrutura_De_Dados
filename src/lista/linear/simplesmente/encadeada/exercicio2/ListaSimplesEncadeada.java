@@ -1,6 +1,6 @@
-package lista.simplesmente.encadeada.exercicio2;
+package lista.linear.simplesmente.encadeada.exercicio2;
 
-import lista.utilizando.referencia.Celula;
+
 
 public class ListaSimplesEncadeada {
 
