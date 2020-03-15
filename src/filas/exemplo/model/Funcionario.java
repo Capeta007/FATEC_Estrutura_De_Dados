@@ -1,4 +1,4 @@
-package lista.linear.fila.exemplo.model;
+package filas.exemplo.model;
 
 public class Funcionario {
 

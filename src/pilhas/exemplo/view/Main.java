@@ -1,6 +1,6 @@
-package lista.linear.pilha.exemplo.view;
+package pilhas.exemplo.view;
 
-import lista.linear.pilha.exemplo.controller.ListaLigada;
+import pilhas.exemplo.controller.ListaLigada;
 
 public class Main {
 

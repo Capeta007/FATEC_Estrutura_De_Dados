@@ -1,4 +1,4 @@
-package lista.linear.fila.exemplo.view;
+package filas.exemplo.view;
 
 
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import lista.linear.fila.exemplo.model.Funcionario;
+import filas.exemplo.model.Funcionario;
 
 public class QueueExample {
 
@@ -25,9 +25,9 @@ public class QueueExample {
 //			
 //		}
 		
-		System.out.println(waitingQueue.remove());
+//		System.out.println(waitingQueue.remove());
 		
-		System.out.println(waitingQueue.peek());
+//		System.out.println(waitingQueue.peek());
 
 //		System.out.println("Fila vazia: " + waitingQueue.isEmpty());
 //

@@ -1,4 +1,4 @@
-package lista.linear.pilha.exemplo.controller;
+package pilhas.exemplo.controller;
 
 public class ListaLigada {
 	private Livro fim;
