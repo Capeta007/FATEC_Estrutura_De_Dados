@@ -4,7 +4,7 @@ public class RecursivaSubConjuntos {
 
 	public static void main(String[] args) {
 		
-		String[] conj = {"A", "B","C"};
+		String[] conj = {"1", "2","3"};
 		
 		subConjunto(conj, conj.length-1);
 
@@ -22,6 +22,8 @@ public class RecursivaSubConjuntos {
 			}
 			
 		}
+		
+		
 		
 	}
 
