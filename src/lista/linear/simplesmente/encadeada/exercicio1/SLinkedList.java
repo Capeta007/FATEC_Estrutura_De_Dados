@@ -104,11 +104,11 @@ public class SLinkedList {
 
 	}
 
-	public void remove(String index) {
+	public void remove(String elemento) {
 		Node node = head;
 		Node ult = null;
 
-		while(node != null && node.equals(index)) {
+		while(node != null && node.equals(elemento)) {
 			ult = node;
 			node = node.getNext();
 		}
@@ -148,11 +148,11 @@ public class SLinkedList {
 
 	}
 	
-	public boolean contains(String index) {
+	public boolean contains(String elemento) {
 		
 		Node find = head;
 		
-        if(head.getElement().equals(index)) {
+        if(head.getElement().equals(elemento)) {
         	return true;
         }
 		
@@ -160,7 +160,7 @@ public class SLinkedList {
 			
 			find = find.getNext();
 			
-			if(find.getElement().equals(index)) {
+			if(find.getElement().equals(elemento)) {
 	        	return true;
 	        }
 		}

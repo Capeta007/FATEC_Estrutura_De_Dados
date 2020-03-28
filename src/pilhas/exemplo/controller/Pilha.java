@@ -1,9 +1,9 @@
 package pilhas.exemplo.controller;
 
-public class ListaLigada {
+public class Pilha {
 	private Livro fim;
 	
-	public ListaLigada() {
+	public Pilha() {
 		fim = (Livro) null;
 	}
 	
@@ -29,7 +29,6 @@ public class ListaLigada {
 	}
 	
 	public void pop() {
-		
 		fim = fim.getAnterior();
 	}
 }
