@@ -12,48 +12,77 @@ public class Prefixa {
 
 		switch (s) {
 		case '+':
-		case '-':
 			return 1;
-
-		case '*':
-		case '/':
+		case '-':
 			return 2;
 
-		case '^':
+		case '*':
 			return 3;
+			
+		case '/':
+			return 4;
+			
+		case '^':
+		    return 5;
 		case '(':
 		case ')':
-			return 4;
+			return 6;
 		}
 		return 0;
 	}
 
 	public String infixaParaPrefixa(char[] exp) {
 
-		int i = 2;
+		int i = 1;
 		char op;
 		Stack stack = new Stack();
 		Stack rever = new Stack();
 		String convertido = "";
 
-		while (exp[exp.length-i] != '.') {
+		while (exp[exp.length - i] != '.') {
 			op = exp[exp.length - i];
 
 			if (operador(op)) {
 
 				if (stack.vazia()) {
 
-					stack.push(op);
-					i++;
+					if (op == ')') {
+						while (op != '(') {
+							if (operador(op)) {
+								if (stack.vazia() || stack.topo() == ')' || prioridade(stack.topo()) < prioridade(op)) {
+									stack.push(op);
+								} else {
+									rever.push(stack.topo());
+									stack.pop();
+									stack.push(op);
+								}
+							} else {
+								rever.push(op);
+							}
+							i++;
+							op = exp[exp.length - i];
+						}
+						stack.push(op);
+						i++;
+					} else {
+						stack.push(op);
+						i++;
+					}
 
 				} else {
 
-					if (prioridade(stack.topo()) < prioridade(op) && op != '(' || op == ')' ) {
+					if (prioridade(stack.topo()) < prioridade(op) && op != '(' || stack.topo() == ')') {
 
 						if (op == ')') {
 							while (op != '(') {
 								if (operador(op)) {
-									stack.push(op);
+									if (stack.vazia() || stack.topo() == ')' || prioridade(stack.topo()) < prioridade(op)) {
+										stack.push(op);
+									} else {
+										rever.push(stack.topo());
+										stack.pop();
+										stack.push(op);
+									}
 								} else {
 									rever.push(op);
 								}
@@ -61,6 +90,7 @@ public class Prefixa {
 								op = exp[exp.length - i];
 							}
 							stack.push(op);
+							i++;
 						} else {
 							stack.push(op);
 							i++;
@@ -68,19 +98,27 @@ public class Prefixa {
 
 					} else {
 
-						if (op == '(') {
-							while ((stack.topo() != ')')) {
-
-								if(stack.topo() != ')' || stack.topo() != '(') {
+						if (stack.topo() == '(') {
+							while (stack.topo() != ')') {
+								if (stack.topo() != '(') {
 									rever.push(stack.topo());
 								}
-
 								stack.pop();
 							}
 							stack.pop();
-							i++;
-						}else {
 							stack.push(op);
+							i++;
+						} else {
+							while (!stack.vazia()) {
+								if (stack.topo() != '(' && stack.topo() != ')') {
+									rever.push(stack.topo());
+								}
+								stack.pop();
+							}
+							if (op != '(') {
+								stack.push(op);
+							}
+
 							i++;
 						}
 					}
@@ -103,7 +141,7 @@ public class Prefixa {
 		}
 
 		while (!rever.vazia()) {
-			if(rever.topo() != ')' && rever.topo() != '(' ) {
+			if (rever.topo() != ')' && rever.topo() != '(') {
 				convertido += rever.topo();
 			}
 			rever.pop();
@@ -111,5 +149,4 @@ public class Prefixa {
 
 		return convertido;
 	}
-
 }

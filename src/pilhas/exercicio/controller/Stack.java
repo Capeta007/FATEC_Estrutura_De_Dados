@@ -5,7 +5,6 @@ public class Stack {
 	private Expressao topo;
 	
 	public Stack() {
-		
 	}
 	
 	public void push(char elemento) {
@@ -24,6 +23,10 @@ public class Stack {
 		
 		return topo.getText();
 		
+	}
+	
+	public void esvazia() {
+		topo = null;
 	}
 	
 	public boolean vazia() {
