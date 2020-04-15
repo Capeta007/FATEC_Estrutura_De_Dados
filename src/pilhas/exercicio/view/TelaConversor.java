@@ -32,7 +32,6 @@ public class TelaConversor extends JFrame {
 	private Posfixa pos;
 	private Prefixa pre;
 	private Infixa inf;
-	
 
 	public TelaConversor() {
 
@@ -110,7 +109,7 @@ public class TelaConversor extends JFrame {
 		tfPosfixa.setFont(new Font("arial", 1, 20));
 		tfPosfixa.setBounds(150, 320, 290, 40);
 		contentPane.add(tfPosfixa);
-		
+
 		lbResult = new JLabel();
 		lbResult.setText("Resultado: ");
 		lbResult.setFont(new Font("arial", 1, 25));
@@ -121,7 +120,7 @@ public class TelaConversor extends JFrame {
 		tfResult.setFont(new Font("arial", 1, 20));
 		tfResult.setBounds(170, 390, 290, 40);
 		contentPane.add(tfResult);
-		
+
 		tfInfixa.setEnabled(false);
 		tfInfixa.setHorizontalAlignment(tfInfixa.CENTER);
 		tfPosfixa.setEnabled(false);
@@ -139,7 +138,7 @@ public class TelaConversor extends JFrame {
 			verificarExpressao();
 
 		} else {
-			JOptionPane.showMessageDialog(null, "Digite a express�o");
+			JOptionPane.showMessageDialog(null, "Digite a expressão");
 		}
 
 	}
@@ -170,16 +169,14 @@ public class TelaConversor extends JFrame {
 	}
 
 	private void infixa(String exp) {
-		
-		
 
 		String expInfixaParaPos = exp + ".";
 		char[] s = expInfixaParaPos.toCharArray();
 		tfPosfixa.setText(" " + pos.infixaParaPosfixa(s));
-		
+
 		String expValue = pos.infixaParaPosfixa(s) + ".";
 		s = expValue.toCharArray();
-        tfResult.setText(" " + pos.valor(s));
+		validarResultado(s);
 
 		String expInfixaParaPre = "." + exp;
 		s = expInfixaParaPre.toCharArray();
@@ -188,11 +185,11 @@ public class TelaConversor extends JFrame {
 	}
 
 	private void posfixa(String exp) {
-		
+
 		String expValue = exp + ".";
 		char[] s = expValue.toCharArray();
-        tfResult.setText(" " + pos.valor(s));
-		
+		validarResultado(s);
+
 		String expPosfixa = "." + exp;
 		s = expPosfixa.toCharArray();
 		tfInfixa.setText(" " + inf.posfixaParaInfixa(s));
@@ -213,15 +210,25 @@ public class TelaConversor extends JFrame {
 		System.out.println(expInfixaParaPos);
 		s = expInfixaParaPos.toCharArray();
 		tfPosfixa.setText(" " + pos.infixaParaPosfixa(s));
-		
+
 		String expValue = pos.infixaParaPosfixa(s) + ".";
 		s = expValue.toCharArray();
-        tfResult.setText(" " + pos.valor(s));
+		validarResultado(s);
+
+	}
+
+	private void validarResultado(char[] exp) {
+
+		try {
+			int i = Integer.parseInt(exp[0] + "");
+			tfResult.setText(" " + pos.valor(exp));
+		} catch (Exception e) {
+
+		}
 
 	}
 
 	public boolean operador(char s) {
-		return (s == '+' || s == '-' || s == '*' || s == '/' || s == '^');
+		return (s == '+' || s == '-' || s == '*' || s == '/' || s == '^'|| s == '¬' || s == '∧' || s == 'v');
 	}
-
 }
