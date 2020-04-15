@@ -11,10 +11,6 @@ public class ModificadoresDoAluno {
 			if(opc == 4) {
 				opc = 6;
 			}
-			
-			if(opc == 5 || opc == 6) {
-				opc = 0;
-			}
 		}
 		
 		if(lse.size() == 0) {

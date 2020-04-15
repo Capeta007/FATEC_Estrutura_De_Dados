@@ -85,6 +85,7 @@ public class ListaSimplesEncadeada {
 			}
 			ult = atual;
 			atual = atual.getNext();
+			size--;
 		}
 		return false;
 	}
