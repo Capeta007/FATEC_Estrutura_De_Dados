@@ -9,7 +9,7 @@ public class Principal {
 		recursivo(n, "A", "C", "B");
 	}
 
-	private static void recursivo(int n, String orig, String dest, String aux ) {
+	private static void recursivo(int n, String orig, String dest, String aux) {
 		
 		if(1 == n) {
 			moveDisco(orig, dest);
